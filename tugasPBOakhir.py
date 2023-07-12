@@ -42,6 +42,12 @@ class BMIWidget(QWidget):
         
         weight = float(weight_text)
         height = float(height_text) / 100
+        
+        # Periksa apakah berat atau tinggi adalah 0
+        if weight == 0 or height == 0:
+            QMessageBox.warning(self, "Kesalahan", "Berat atau tinggi tidak boleh 0.")
+            return
+        
         bmi = weight / (height ** 2)
         
         self.result_value.setText(str(bmi))
